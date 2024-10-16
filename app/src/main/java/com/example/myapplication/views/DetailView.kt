@@ -9,14 +9,16 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.navigation.NavController
 import com.example.myapplication.components.ActionButton
+import com.example.myapplication.components.NavigationButton
 import com.example.myapplication.components.TitleBar
 import com.example.myapplication.components.TitleView
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DetailView() {
+fun DetailView(navController: NavController, id:Int) {
     Scaffold (
         topBar = {
             CenterAlignedTopAppBar(
@@ -32,13 +34,18 @@ fun DetailView() {
 
     ) { innerPadding ->
         Column(modifier = Modifier.padding(innerPadding)){
-            DetailHomeView()
+            DetailHomeView(navController, id)
         }
-
     }
 }
 
 @Composable
-fun DetailHomeView() {
+fun DetailHomeView(navController: NavController, id: Int) {
     TitleView(name = "DetailView")
+    TitleView(name = id.toString())
+    Column{
+        NavigationButton("Ir a Home",Color.LightGray, Color.Black){
+            navController.navigate("Home")
+        }
+    }
 }

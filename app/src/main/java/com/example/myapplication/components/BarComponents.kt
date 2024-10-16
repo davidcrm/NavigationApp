@@ -4,11 +4,13 @@ import android.service.autofill.OnClickAction
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.unit.sp
 
@@ -34,10 +36,14 @@ fun ActionButton(){
     }
 }
 @Composable
-fun NavigationButton(){
-    Button(onClick = { /*TODO*/ },
-
-        ) {
-        Text(text= "Ir a la siguiente pantalla.")
+fun NavigationButton(name: String, backColor: Color, color: Color, onClick:() -> Unit){
+    Button(
+        onClick = onClick,
+        colors = ButtonDefaults.buttonColors(
+                contentColor = color,
+                containerColor = backColor
+        )
+    ) {
+        Text(text= name)
     }
 }
