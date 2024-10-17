@@ -1,6 +1,9 @@
 package com.example.myapplication.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateMapOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -21,9 +24,14 @@ fun NavManager(){
             //Se declara con NavArgument
             navArgument(name = "id"){
                 type = NavType.IntType
+            },
+            navArgument("opcional"){
+                type = NavType.StringType
             }
         )){
-            DetailView(navController, id)
+            val id = it.arguments?.getInt("id")?: 0
+            var opcional = it.arguments?.getString("opcional")?: ""
+            DetailView(navController, id, opcional)
         }
     }
 }

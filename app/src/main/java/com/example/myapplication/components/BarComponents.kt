@@ -7,9 +7,11 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.unit.sp
@@ -46,4 +48,12 @@ fun NavigationButton(name: String, backColor: Color, color: Color, onClick:() ->
     ) {
         Text(text= name)
     }
+}
+
+@Composable
+
+fun MainIconButton(icon: ImageVector, onClick: () -> Unit){
+ IconButton(onClick = onClick){
+     Icon(imageVector = icon, contentDescription = null, tint = Color.White)
+ }
 }
